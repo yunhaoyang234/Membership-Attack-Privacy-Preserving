@@ -71,12 +71,12 @@ tensorboard --logdir rl-starter-files/storage/FourRoom1
 ```
 
 3, Visualize the multiple plots simultaneously:
-Create a new directory `rl-starter-files/storage/multi_plots/` and copy **events.out.tfevents** files to `multi_plots/` directory. An example is [here](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files/storage/mr_plots). Then run:
+Create a new directory `rl-starter-files/storage/fr_plots/` and copy **events.out.tfevents** files to `fr_plots/` directory. An example is [here](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files/storage/mr_plots). Then run:
 ```
-tensorboard --logdir rl-starter-files/storage/multi_plots
+tensorboard --logdir rl-starter-files/storage/fr_plots
 ```
 
-**More details can be found on the README in [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid) and [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files)**
+**More examples and visualizations can be found on the README in [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid) and [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files)**
 
 ## Examples of Membership Attack:
 1, Membership attack on supervised learning: [Mem_att_toy_cifar10.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/Mem_att_toy_cifar10.ipynb).
