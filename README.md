@@ -85,4 +85,15 @@ tensorboard --logdir rl-starter-files/storage/fr_plots
 
 3, Membership attack on RL models under MultiRooms environment: [RL_Men_att_multi_rooms.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/RL_Men_att_multi_rooms.ipynb)
 
+#### Note:
+
+If you haven't install **Jupyter Notebook**, please go visit [here](https://jupyter.org/install) for installation. If you use `pip`, you can install it with:
+```
+pip install notebook
+```
+
+To run the notebook, go to the directory where your notebook locate at and run the following command at the Terminal (Mac/Linux) or Command Prompt (Windows):
+```
+jupyter notebook
+```
 
