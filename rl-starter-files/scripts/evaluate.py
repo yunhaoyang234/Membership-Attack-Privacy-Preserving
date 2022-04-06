@@ -2,6 +2,7 @@ import argparse
 import time
 import torch
 from torch_ac.utils.penv import ParallelEnv
+import numpy as np
 
 import utils
 
@@ -27,6 +28,7 @@ parser.add_argument("--memory", action="store_true", default=False,
                     help="add a LSTM to the model")
 parser.add_argument("--text", action="store_true", default=False,
                     help="add a GRU to the model")
+parser.add_argument("--sigma", type=float, default=0)
 args = parser.parse_args()
 
 # Set seed for all randomness sources
@@ -54,6 +56,12 @@ agent = utils.Agent(env.observation_space, env.action_space, model_dir,
                     device=device, argmax=args.argmax, num_envs=args.procs,
                     use_memory=args.memory, use_text=args.text)
 print("Agent loaded\n")
+
+# Add noise
+if args.sigma > 0:
+    for param in agent.acmodel.actor.state_dict():
+        size = agent.acmodel.actor.state_dict()[param].shape
+        agent.acmodel.actor.state_dict()[param] += torch.Tensor(np.random.normal(0, args.sigma, size)).to(device)
 
 # Initialize logs
 
