@@ -413,7 +413,6 @@ Registered configurations:
   <img src="figures/ObstructedMaze-1Dlh.png" width="250">
   <img src="figures/ObstructedMaze-1Dlhb.png" width="250">
   <img src="figures/ObstructedMaze-2Dl.png" width="100">
-  <img src="figures/ObstructedMaze-2Dlh.png" width="100">
   <img src="figures/ObstructedMaze-2Dlhb.png" width="100">
   <img src="figures/ObstructedMaze-1Q.png" width="250">
   <img src="figures/ObstructedMaze-2Q.png" width="250">
