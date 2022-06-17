@@ -343,12 +343,12 @@ Registed configurations:
 - `MiniGrid-KeyCorridorS6R3-v0`
 
 <p align="center">
-    <img src="gym-minigrid/figures/KeyCorridorS3R1.png" width="250">
-    <img src="gym-minigrid/figures/KeyCorridorS3R2.png" width="250">
-    <img src="gym-minigrid/figures/KeyCorridorS3R3.png" width="250">
-    <img src="gym-minigrid/figures/KeyCorridorS4R3.png" width="250">
-    <img src="gym-minigrid/figures/KeyCorridorS5R3.png" width="250">
-    <img src="gym-minigrid/figures/KeyCorridorS6R3.png" width="250">
+    <img src="figures/KeyCorridorS3R1.png" width="250">
+    <img src="figures/KeyCorridorS3R2.png" width="250">
+    <img src="figures/KeyCorridorS3R3.png" width="250">
+    <img src="figures/KeyCorridorS4R3.png" width="250">
+    <img src="figures/KeyCorridorS5R3.png" width="250">
+    <img src="figures/KeyCorridorS6R3.png" width="250">
 </p>
 
 This environment is similar to the locked room environment, but there are
@@ -412,15 +412,15 @@ Registered configurations:
 - `MiniGrid-ObstructedMaze-Full-v0`
 
 <p align="center">
-  <img src="gym-minigrid/figures/ObstructedMaze-1Dl.png" width="250">
-  <img src="gym-minigrid/figures/ObstructedMaze-1Dlh.png" width="250">
-  <img src="gym-minigrid/figures/ObstructedMaze-1Dlhb.png" width="250">
-  <img src="gym-minigrid/figures/ObstructedMaze-2Dl.png" width="100">
-  <img src="gym-minigrid/figures/ObstructedMaze-2Dlh.png" width="100">
-  <img src="gym-minigrid/figures/ObstructedMaze-2Dlhb.png" width="100">
-  <img src="gym-minigrid/figures/ObstructedMaze-1Q.png" width="250">
-  <img src="gym-minigrid/figures/ObstructedMaze-2Q.png" width="250">
-  <img src="gym-minigrid/figures/ObstructedMaze-4Q.png" width="250">
+  <img src="figures/ObstructedMaze-1Dl.png" width="250">
+  <img src="figures/ObstructedMaze-1Dlh.png" width="250">
+  <img src="figures/ObstructedMaze-1Dlhb.png" width="250">
+  <img src="figures/ObstructedMaze-2Dl.png" width="100">
+  <img src="figures/ObstructedMaze-2Dlh.png" width="100">
+  <img src="figures/ObstructedMaze-2Dlhb.png" width="100">
+  <img src="figures/ObstructedMaze-1Q.png" width="250">
+  <img src="figures/ObstructedMaze-2Q.png" width="250">
+  <img src="figures/ObstructedMaze-4Q.png" width="250">
 </p>
 
 The agent has to pick up a box which is placed in a corner of a 3x3 maze.
@@ -468,10 +468,10 @@ Registered configurations:
 - `MiniGrid-LavaCrossingS11N5-v0`
 
 <p align="center">
-  <img src="gym-minigrid/figures/LavaCrossingS9N1.png" width="200">
-  <img src="gym-minigrid/figures/LavaCrossingS9N2.png" width="200">
-  <img src="gym-minigrid/figures/LavaCrossingS9N3.png" width="200">
-  <img src="gym-minigrid/figures/LavaCrossingS11N5.png" width="250">
+  <img src="figures/LavaCrossingS9N1.png" width="200">
+  <img src="figures/LavaCrossingS9N2.png" width="200">
+  <img src="figures/LavaCrossingS9N3.png" width="200">
+  <img src="figures/LavaCrossingS11N5.png" width="250">
 </p>
 
 The agent has to reach the green goal square on the other corner of the room
@@ -490,10 +490,10 @@ Registered configurations:
 - `MiniGrid-SimpleCrossingS11N5-v0`
 
 <p align="center">
-  <img src="gym-minigrid/figures/SimpleCrossingS9N1.png" width="200">
-  <img src="gym-minigrid/figures/SimpleCrossingS9N2.png" width="200">
-  <img src="gym-minigrid/figures/SimpleCrossingS9N3.png" width="200">
-  <img src="gym-minigrid/figures/SimpleCrossingS11N5.png" width="250">
+  <img src="figures/SimpleCrossingS9N1.png" width="200">
+  <img src="figures/SimpleCrossingS9N2.png" width="200">
+  <img src="figures/SimpleCrossingS9N3.png" width="200">
+  <img src="figures/SimpleCrossingS11N5.png" width="250">
 </p>
 
 Similar to the `LavaCrossing` environment, the agent has to reach the green
