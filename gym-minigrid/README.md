@@ -29,7 +29,10 @@ Please use this bibtex if you want to cite this repository in your publications:
 ```
 
 List of publications & submissions using MiniGrid or BabyAI (please open a pull request to add missing entries):
-- [A Consciousness-Inspired Planning Agent for Model-Based Reinforcement Learning](https://arxiv.org/abs/2106.02097) (Mila, McGill University, 2021)
+- [In a Nutshell, the Human Asked for This: Latent Goals for Following Temporal Specifications](https://openreview.net/pdf?id=rUwm9wCjURV) (Imperial College London, ICLR 2022)
+- [Interesting Object, Curious Agent: Learning Task-Agnostic Exploration](https://arxiv.org/abs/2111.13119) (Meta AI Research, NeurIPS 2021)
+- [Safe Policy Optimization with Local Generalized Linear Function Approximations](https://arxiv.org/abs/2111.04894) (IBM Research, Tsinghua University, NeurIPS 2021)
+- [A Consciousness-Inspired Planning Agent for Model-Based Reinforcement Learning](https://arxiv.org/abs/2106.02097) (Mila, McGill University, NeurIPS 2021)
 - [SPOTTER: Extending Symbolic Planning Operators through Targeted Reinforcement Learning](http://www.ifaamas.org/Proceedings/aamas2021/pdfs/p1118.pdf) (Tufts University, SIFT, AAMAS 2021)
 - [Grid-to-Graph: Flexible Spatial Relational Inductive Biases for Reinforcement Learning](https://arxiv.org/abs/2102.04220) (UCL, AAMAS 2021)
 - [Rank the Episodes: A Simple Approach for Exploration in Procedurally-Generated Environments](https://openreview.net/forum?id=MtEE0CktZht) (Texas A&M University, Kuai Inc., ICLR 2021)
@@ -262,8 +265,8 @@ Registered configurations:
 
 This environment has multiple objects of assorted types and colors. The
 agent receives a textual string as part of its observation telling it
-which object to pick up. Picking up the wrong object produces a negative
-reward.
+which object to pick up. Picking up the wrong object terminates the
+episode with zero reward.
 
 ### Go-to-door environment
 
@@ -413,6 +416,7 @@ Registered configurations:
   <img src="figures/ObstructedMaze-1Dlh.png" width="250">
   <img src="figures/ObstructedMaze-1Dlhb.png" width="250">
   <img src="figures/ObstructedMaze-2Dl.png" width="100">
+  <img src="figures/ObstructedMaze-2Dlh.png" width="100">
   <img src="figures/ObstructedMaze-2Dlhb.png" width="100">
   <img src="figures/ObstructedMaze-1Q.png" width="250">
   <img src="figures/ObstructedMaze-2Q.png" width="250">
