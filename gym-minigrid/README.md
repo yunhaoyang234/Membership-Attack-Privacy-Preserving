@@ -192,7 +192,7 @@ Registered configurations:
 - `MiniGrid-Empty-16x16-v0`
 
 <p align="center">
-<img src="/figures/empty-env.png" width=250>
+<img src="/gym-minigrid/figures/empty-env.png" width=250>
 </p>
 
 This environment is an empty room, and the goal of the agent is to reach the
@@ -210,7 +210,7 @@ Registered configurations:
 - `MiniGrid-FourRooms-v0`
 
 <p align="center">
-<img src="/figures/four-rooms-env.png" width=380>
+<img src="/gym-minigrid/figures/four-rooms-env.png" width=380>
 </p>
 
 Classic four room reinforcement learning environment. The agent must navigate
@@ -227,7 +227,7 @@ Registered configurations:
 - `MiniGrid-DoorKey-16x16-v0`
 
 <p align="center">
-<img src="/figures/door-key-env.png">
+<img src="/gym-minigrid/figures/door-key-env.png">
 </p>
 
 This environment has a key that the agent must pick up in order to unlock
@@ -243,7 +243,7 @@ Registered configurations:
 - `MiniGrid-MultiRoom-N6-v0` (six rooms)
 
 <p align="center">
-<img src="/figures/multi-room.gif" width=416 height=424>
+<img src="/gym-minigrid/figures/multi-room.gif" width=416 height=424>
 </p>
 
 This environment has a series of connected rooms with doors that must be
@@ -260,7 +260,7 @@ Registered configurations:
 - `MiniGrid-Fetch-8x8-N3-v0`
 
 <p align="center">
-<img src="/figures/fetch-env.png" width=450>
+<img src="/gym-minigrid/figures/fetch-env.png" width=450>
 </p>
 
 This environment has multiple objects of assorted types and colors. The
@@ -276,7 +276,7 @@ Registered configurations:
 - `MiniGrid-GoToDoor-8x8-v0`
 
 <p align="center">
-<img src="/figures/gotodoor-6x6.png" width=400>
+<img src="/gym-minigrid/figures/gotodoor-6x6.png" width=400>
 </p>
 
 This environment is a room with four doors, one on each wall. The agent
@@ -343,12 +343,12 @@ Registed configurations:
 - `MiniGrid-KeyCorridorS6R3-v0`
 
 <p align="center">
-    <img src="figures/KeyCorridorS3R1.png" width="250">
-    <img src="figures/KeyCorridorS3R2.png" width="250">
-    <img src="figures/KeyCorridorS3R3.png" width="250">
-    <img src="figures/KeyCorridorS4R3.png" width="250">
-    <img src="figures/KeyCorridorS5R3.png" width="250">
-    <img src="figures/KeyCorridorS6R3.png" width="250">
+    <img src="gym-minigrid/figures/KeyCorridorS3R1.png" width="250">
+    <img src="gym-minigrid/figures/KeyCorridorS3R2.png" width="250">
+    <img src="gym-minigrid/figures/KeyCorridorS3R3.png" width="250">
+    <img src="gym-minigrid/figures/KeyCorridorS4R3.png" width="250">
+    <img src="gym-minigrid/figures/KeyCorridorS5R3.png" width="250">
+    <img src="gym-minigrid/figures/KeyCorridorS6R3.png" width="250">
 </p>
 
 This environment is similar to the locked room environment, but there are
@@ -365,7 +365,7 @@ Registed configurations:
 - `MiniGrid-Unlock-v0`
 
 <p align="center">
-    <img src="figures/Unlock.png" width="200">
+    <img src="gym-minigridfigures/Unlock.png" width="200">
 </p>
 
 The agent has to open a locked door. This environment can be solved without
@@ -377,7 +377,7 @@ Registed configurations:
 - `MiniGrid-UnlockPickup-v0`
 
 <p align="center">
-    <img src="figures/UnlockPickup.png" width="250">
+    <img src="gym-minigrid/figures/UnlockPickup.png" width="250">
 </p>
 
 The agent has to pick up a box which is placed in another room, behind a
@@ -389,7 +389,7 @@ Registed configurations:
 - `MiniGrid-BlockedUnlockPickup-v0`
 
 <p align="center">
-    <img src="figures/BlockedUnlockPickup.png" width="250">
+    <img src="gym-minigrid/figures/BlockedUnlockPickup.png" width="250">
 </p>
 
 The agent has to pick up a box which is placed in another room, behind a
@@ -412,15 +412,15 @@ Registered configurations:
 - `MiniGrid-ObstructedMaze-Full-v0`
 
 <p align="center">
-  <img src="figures/ObstructedMaze-1Dl.png" width="250">
-  <img src="figures/ObstructedMaze-1Dlh.png" width="250">
-  <img src="figures/ObstructedMaze-1Dlhb.png" width="250">
-  <img src="figures/ObstructedMaze-2Dl.png" width="100">
-  <img src="figures/ObstructedMaze-2Dlh.png" width="100">
-  <img src="figures/ObstructedMaze-2Dlhb.png" width="100">
-  <img src="figures/ObstructedMaze-1Q.png" width="250">
-  <img src="figures/ObstructedMaze-2Q.png" width="250">
-  <img src="figures/ObstructedMaze-4Q.png" width="250">
+  <img src="gym-minigrid/figures/ObstructedMaze-1Dl.png" width="250">
+  <img src="gym-minigrid/figures/ObstructedMaze-1Dlh.png" width="250">
+  <img src="gym-minigrid/figures/ObstructedMaze-1Dlhb.png" width="250">
+  <img src="gym-minigrid/figures/ObstructedMaze-2Dl.png" width="100">
+  <img src="gym-minigrid/figures/ObstructedMaze-2Dlh.png" width="100">
+  <img src="gym-minigrid/figures/ObstructedMaze-2Dlhb.png" width="100">
+  <img src="gym-minigrid/figures/ObstructedMaze-1Q.png" width="250">
+  <img src="gym-minigrid/figures/ObstructedMaze-2Q.png" width="250">
+  <img src="gym-minigrid/figures/ObstructedMaze-4Q.png" width="250">
 </p>
 
 The agent has to pick up a box which is placed in a corner of a 3x3 maze.
@@ -439,8 +439,8 @@ into lava on its way. The aim of this environment is to test an agent's ability 
 different variants of the environment, so that the agent can be trained on one variant and tested on the other.
 
 <p align="center">
-  <img src="figures/DistShift1.png" width="200">
-  <img src="figures/DistShift2.png" width="200">
+  <img src="gym-minigrid/figures/DistShift1.png" width="200">
+  <img src="gym-minigrid/figures/DistShift2.png" width="200">
 </p>
 
 ## Lava gap environment
@@ -451,7 +451,7 @@ Registered configurations:
 - `MiniGrid-LavaGapS7-v0`
 
 <p align="center">
-  <img src="figures/LavaGapS6.png" width="200">
+  <img src="gym-minigrid/figures/LavaGapS6.png" width="200">
 </p>
 
 The agent has to reach the green goal square at the opposite corner of the room,
@@ -468,10 +468,10 @@ Registered configurations:
 - `MiniGrid-LavaCrossingS11N5-v0`
 
 <p align="center">
-  <img src="figures/LavaCrossingS9N1.png" width="200">
-  <img src="figures/LavaCrossingS9N2.png" width="200">
-  <img src="figures/LavaCrossingS9N3.png" width="200">
-  <img src="figures/LavaCrossingS11N5.png" width="250">
+  <img src="gym-minigrid/figures/LavaCrossingS9N1.png" width="200">
+  <img src="gym-minigrid/figures/LavaCrossingS9N2.png" width="200">
+  <img src="gym-minigrid/figures/LavaCrossingS9N3.png" width="200">
+  <img src="gym-minigrid/figures/LavaCrossingS11N5.png" width="250">
 </p>
 
 The agent has to reach the green goal square on the other corner of the room
@@ -490,10 +490,10 @@ Registered configurations:
 - `MiniGrid-SimpleCrossingS11N5-v0`
 
 <p align="center">
-  <img src="figures/SimpleCrossingS9N1.png" width="200">
-  <img src="figures/SimpleCrossingS9N2.png" width="200">
-  <img src="figures/SimpleCrossingS9N3.png" width="200">
-  <img src="figures/SimpleCrossingS11N5.png" width="250">
+  <img src="gym-minigrid/figures/SimpleCrossingS9N1.png" width="200">
+  <img src="gym-minigrid/figures/SimpleCrossingS9N2.png" width="200">
+  <img src="gym-minigrid/figures/SimpleCrossingS9N3.png" width="200">
+  <img src="gym-minigrid/figures/SimpleCrossingS11N5.png" width="250">
 </p>
 
 Similar to the `LavaCrossing` environment, the agent has to reach the green
@@ -512,7 +512,7 @@ Registered configurations:
 - `MiniGrid-Dynamic-Obstacles-16x16-v0`
 
 <p align="center">
-<img src="/figures/dynamic_obstacles.gif">
+<img src="/gym-minigrid/figures/dynamic_obstacles.gif">
 </p>
 
 This environment is an empty room with moving obstacles. The goal of the agent is to reach the green goal square without colliding with any obstacle. A large penalty is subtracted if the agent collides with an obstacle and the episode finishes. This environment is useful to test Dynamic Obstacle Avoidance for mobile robots with Reinforcement Learning in Partial Observability.
