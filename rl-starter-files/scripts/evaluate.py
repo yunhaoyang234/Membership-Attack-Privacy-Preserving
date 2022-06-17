@@ -14,11 +14,11 @@ parser.add_argument("--env", required=True,
                     help="name of the environment (REQUIRED)")
 parser.add_argument("--model", required=True,
                     help="name of the trained model (REQUIRED)")
-parser.add_argument("--episodes", type=int, default=100,
+parser.add_argument("--episodes", type=int, default=20,
                     help="number of episodes of evaluation (default: 100)")
 parser.add_argument("--seed", type=int, default=0,
                     help="random seed (default: 0)")
-parser.add_argument("--procs", type=int, default=16,
+parser.add_argument("--procs", type=int, default=1,
                     help="number of processes (default: 16)")
 parser.add_argument("--argmax", action="store_true", default=False,
                     help="action with highest probability is selected")
@@ -28,7 +28,7 @@ parser.add_argument("--memory", action="store_true", default=False,
                     help="add a LSTM to the model")
 parser.add_argument("--text", action="store_true", default=False,
                     help="add a GRU to the model")
-parser.add_argument("--sigma", type=float, default=0)
+parser.add_argument("--sigma", type=float, default=0, help="sigma for Gaussian mechanism")
 args = parser.parse_args()
 
 # Set seed for all randomness sources
@@ -65,7 +65,7 @@ if args.sigma > 0:
 
 # Initialize logs
 
-logs = {"num_frames_per_episode": [], "return_per_episode": []}
+logs = {"num_frames_per_episode": [], "return_per_episode": [], "value":[], "entropy":[], "reward":[]}
 
 # Run agent
 
@@ -77,10 +77,17 @@ log_done_counter = 0
 log_episode_return = torch.zeros(args.procs, device=device)
 log_episode_num_frames = torch.zeros(args.procs, device=device)
 
+value_, reward_ = [[]], [[]]
+idx = 0
+prev_val = None
 while log_done_counter < args.episodes:
-    actions = agent.get_actions(obss)
+    actions, value = agent.get_actions(obss)
+    # ent = agent.get_entropy(obss)
     obss, rewards, dones, _ = env.step(actions)
+
     agent.analyze_feedbacks(rewards, dones)
+    value_[idx].append(round(value[0], 3))
+    # reward_[idx].append(rewards[0])
 
     log_episode_return += torch.tensor(rewards, device=device, dtype=torch.float)
     log_episode_num_frames += torch.ones(args.procs, device=device)
@@ -90,15 +97,51 @@ while log_done_counter < args.episodes:
             log_done_counter += 1
             logs["return_per_episode"].append(log_episode_return[i].item())
             logs["num_frames_per_episode"].append(log_episode_num_frames[i].item())
+            logs["value"].append(prev_val[i])
+            logs["reward"].append(rewards[i])
+            if i==0:
+                v_t_1 = value_[idx][0]
+                r_t = rewards[0]
+                v_t = value_[idx][0]
+                a_t = r_t + v_t_1 - v_t
+                reward_[idx].append(round(r_t, 3))
+                for t in range(len(value_[idx])-2, -1, -1):
+                    v_t_1 = value_[idx][t+1]
+                    v_t = value_[idx][t]
+                    a_t = min(0.99*v_t_1 - v_t + 0.95*0.99*a_t, r_t)
+                    reward_[idx].append(round(a_t, 3))
+                reward_[idx].reverse()
+
+                idx += 1
+                value_.append([])
+                reward_.append([])
+
+                # print(value_[0])
+                # print(reward_[0])
+                # print(np.corrcoef(np.array(value_[0]), np.array(reward_[0]))[0][1])
+                # exit()
 
     mask = 1 - torch.tensor(dones, device=device, dtype=torch.float)
     log_episode_return *= mask
     log_episode_num_frames *= mask
+    prev_val = value
 
 end_time = time.time()
 
-# Print logs
+# corr = []
+# for i in range(idx):
+#     v, r = np.array(value_[i]), np.array(reward_[i])
+#     v, r = np.round((v - np.min(v)) / (np.max(v) - np.min(v)), 3), np.round((r - np.min(r)) / (1 - np.min(r)), 3)
+#     c = np.corrcoef(v, r)[0][1]
+#     # print(list(v), list(r), c)
+#     # print()
+#     if np.isnan(c):
+#         c = 0
+#     corr.append(c)
+# print(np.mean(corr))
+# exit()
 
+# Print logs
 num_frames = sum(logs["num_frames_per_episode"])
 fps = num_frames/(end_time - start_time)
 duration = int(end_time - start_time)
@@ -106,7 +149,7 @@ return_per_episode = utils.synthesize(logs["return_per_episode"])
 num_frames_per_episode = utils.synthesize(logs["num_frames_per_episode"])
 
 print("F {} | FPS {:.0f} | D {} | R:μσmM {:.2f} {:.2f} {:.2f} {:.2f} | F:μσmM {:.1f} {:.1f} {} {}"
-      .format(num_frames, fps, duration,
+      .format(num_frames, fps, duration, 
               *return_per_episode.values(),
               *num_frames_per_episode.values()))
 

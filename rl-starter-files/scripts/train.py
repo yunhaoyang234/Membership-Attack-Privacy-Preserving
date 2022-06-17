@@ -63,6 +63,7 @@ parser.add_argument("--recurrence", type=int, default=1,
 parser.add_argument("--text", action="store_true", default=False,
                     help="add a GRU to the model to handle text input")
 parser.add_argument("--k", type=int, default=0, help="k for dirichlet distribution")
+parser.add_argument("--a", type=int, default=0, help="bias for dirichlet distribution")
 parser.add_argument("--test", type=int, default=0, help="1 for testing, 0 for training")
 
 args = parser.parse_args()
@@ -136,10 +137,9 @@ if args.algo == "a2c":
                             args.entropy_coef, args.value_loss_coef, args.max_grad_norm, args.recurrence,
                             args.optim_alpha, args.optim_eps, preprocess_obss)
 elif args.algo == "ppo":
-    print(envs[0].agent_pos)
     algo = torch_ac.PPOAlgo(envs, acmodel, device, args.frames_per_proc, args.discount, args.lr, args.gae_lambda,
                             args.entropy_coef, args.value_loss_coef, args.max_grad_norm, args.recurrence,
-                            args.optim_eps, args.clip_eps, args.epochs, args.batch_size, preprocess_obss, k=args.k)
+                            args.optim_eps, args.clip_eps, args.epochs, args.batch_size, preprocess_obss, k=args.k, a=args.a)
 else:
     raise ValueError("Incorrect algorithm name: {}".format(args.algo))
 
@@ -155,6 +155,7 @@ start_time = time.time()
 decay_factor, decay_steps = 0.9, 10
 
 probabilities = torch.zeros((1,7))
+v_probs = torch.zeros((1,7))
 
 while num_frames < args.frames:
     # Update model parameters
@@ -221,6 +222,7 @@ while num_frames < args.frames:
         utils.save_status(status, model_dir)
         txt_logger.info("Status saved")
 
-if args.test == 1:
-    df = pd.DataFrame(probabilities[1:].numpy())
-    df.to_csv('storage/' + args.model + '/probabilities.csv', index=False)
+# if args.test == 1:
+#     df = pd.DataFrame(probabilities[1:].numpy())
+#     df.to_csv('storage/' + args.model + '/probabilities.csv', index=False)
+
