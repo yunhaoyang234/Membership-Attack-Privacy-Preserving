@@ -1,0 +1,141 @@
+/Users/yunhaoyang/Desktop/prav-pres-rl/rl-starter-files/scripts/train.py --algo a2c --env MiniGrid-MultiRoom-N2-v00 --model mr_td_v --frames 204800 --gae-lambda 0 --log-interval 256 --save-interval 2560
+
+Namespace(a=0, algo='a2c', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v00', epochs=4, frames=204800, frames_per_proc=None, gae_lambda=0.0, k=0, log_interval=256, lr=0.001, max_grad_norm=0.5, mem=False, model='mr_td_v', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=2560, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+Environments loaded
+
+Training status loaded
+
+Observations preprocessor loaded
+Model loaded
+
+ACModel(
+  (image_conv): Sequential(
+    (0): Conv2d(3, 16, kernel_size=(2, 2), stride=(1, 1))
+    (1): ReLU()
+    (2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+    (3): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1))
+    (4): ReLU()
+    (5): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1))
+    (6): ReLU()
+  )
+  (actor): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=7, bias=True)
+  )
+  (critic): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=1, bias=True)
+  )
+)
+
+Optimizer loaded
+
+U 256 | F 032768 | FPS 3219 | D 8 | rR:μσmM 0.33 0.32 0.00 0.86 | F:μσmM 706.4 311.5 151.0 1000.0 | H 1.938 | V 0.152 | pL -0.006 | vL 0.000 | ∇ 0.012
+/Users/yunhaoyang/Desktop/prav-pres-rl/rl-starter-files/scripts/train.py --algo a2c --env MiniGrid-MultiRoom-N2-v00 --model mr_td_v --frames 204800 --gae-lambda 0 --log-interval 256 --save-interval 10
+
+Namespace(a=0, algo='a2c', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v00', epochs=4, frames=204800, frames_per_proc=None, gae_lambda=0.0, k=0, log_interval=256, lr=0.001, max_grad_norm=0.5, mem=False, model='mr_td_v', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+Environments loaded
+
+Training status loaded
+
+Observations preprocessor loaded
+Model loaded
+
+ACModel(
+  (image_conv): Sequential(
+    (0): Conv2d(3, 16, kernel_size=(2, 2), stride=(1, 1))
+    (1): ReLU()
+    (2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+    (3): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1))
+    (4): ReLU()
+    (5): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1))
+    (6): ReLU()
+  )
+  (actor): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=7, bias=True)
+  )
+  (critic): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=1, bias=True)
+  )
+)
+
+Optimizer loaded
+
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+Status saved
+/Users/yunhaoyang/Desktop/prav-pres-rl/rl-starter-files/scripts/train.py --algo a2c --env MiniGrid-MultiRoom-N2-v00 --model mr_td_v --frames 204800 --gae-lambda 0 --log-interval 256 --save-interval 256
+
+Namespace(a=0, algo='a2c', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v00', epochs=4, frames=204800, frames_per_proc=None, gae_lambda=0.0, k=0, log_interval=256, lr=0.001, max_grad_norm=0.5, mem=False, model='mr_td_v', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=256, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+Environments loaded
+
+Training status loaded
+
+Observations preprocessor loaded
+Model loaded
+
+ACModel(
+  (image_conv): Sequential(
+    (0): Conv2d(3, 16, kernel_size=(2, 2), stride=(1, 1))
+    (1): ReLU()
+    (2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+    (3): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1))
+    (4): ReLU()
+    (5): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1))
+    (6): ReLU()
+  )
+  (actor): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=7, bias=True)
+  )
+  (critic): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=1, bias=True)
+  )
+)
+
+Optimizer loaded
+
+U 256 | F 032768 | FPS 3821 | D 3 | rR:μσmM 0.72 0.12 0.39 0.92 | F:μσmM 316.2 138.4 91.0 678.0 | H 1.870 | V 0.087 | pL -0.001 | vL 0.001 | ∇ 0.015
+Status saved
+U 512 | F 065536 | FPS 3331 | D 12 | rR:μσmM 0.88 0.09 0.71 0.99 | F:μσmM 134.9 104.1 11.0 326.0 | H 1.787 | V 0.251 | pL -0.004 | vL 0.001 | ∇ 0.022
+Status saved
+U 768 | F 098304 | FPS 3589 | D 21 | rR:μσmM 0.89 0.20 0.16 0.99 | F:μσmM 118.5 222.1 10.0 937.0 | H 1.653 | V 0.420 | pL -0.008 | vL 0.000 | ∇ 0.068
+Status saved
+U 1024 | F 131072 | FPS 2925 | D 31 | rR:μσmM 0.94 0.12 0.48 0.99 | F:μσmM 63.0 135.1 13.0 582.0 | H 1.402 | V 0.753 | pL -0.003 | vL 0.002 | ∇ 0.065
+Status saved
+U 1280 | F 163840 | FPS 3651 | D 41 | rR:μσmM 0.97 0.03 0.85 0.99 | F:μσmM 31.6 37.0 9.0 164.0 | H 1.307 | V 0.852 | pL -0.005 | vL 0.000 | ∇ 0.023
+Status saved
+U 1536 | F 196608 | FPS 3593 | D 51 | rR:μσmM 0.98 0.01 0.95 0.99 | F:μσmM 23.4 12.2 11.0 57.0 | H 1.406 | V 0.831 | pL -0.008 | vL 0.000 | ∇ 0.012
+Status saved
