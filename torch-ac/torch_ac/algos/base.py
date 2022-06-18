@@ -223,13 +223,14 @@ class BaseAlgo(ABC):
                 _, next_value = self.acmodel(preprocessed_obs)
 
         for i in reversed(range(self.num_frames_per_proc)):
+            next_mask = self.masks[i+1] if i < self.num_frames_per_proc - 1 else self.mask
+            next_value = self.values[i+1] if i < self.num_frames_per_proc - 1 else next_value
+            next_advantage = self.advantages[i+1] if i < self.num_frames_per_proc - 1 else 0
             if self.gae_lambda > 1:
-                pass
+                next_n = i+self.gae_lambda+1
+                next_n_val = self.values[next_n] if next_n < self.num_frames_per_proc - 1 else next_value
+                self.advantages[i] = next_advantage * next_mask - self.discount**self.gae_lambda*next_n_val + self.rewards[i]
             else:
-                next_mask = self.masks[i+1] if i < self.num_frames_per_proc - 1 else self.mask
-                next_value = self.values[i+1] if i < self.num_frames_per_proc - 1 else next_value
-                next_advantage = self.advantages[i+1] if i < self.num_frames_per_proc - 1 else 0
-
                 delta = self.rewards[i] + self.discount * next_value * next_mask - self.values[i]
                 self.advantages[i] = delta + self.discount * self.gae_lambda * next_advantage * next_mask
 
