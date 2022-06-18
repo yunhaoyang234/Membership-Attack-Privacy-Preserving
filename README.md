@@ -1,6 +1,7 @@
-# Membership Attacks on Reinforcement Learning
+# Membership Attacks on Reinforcement Learning Models and Recurrent Models
 
-Code for performing membership attacks on reinforcement leanring algorithms. The reinforcement leanring algorithms are implemented in [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files) and the environments are from [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid).
+Code for performing membership attacks on reinforcement leanring algorithms and recurrent neural networks. The reinforcement leanring algorithms are implemented in [rl-starter-files](https://github.com/lcswillems/rl-starter-files) and the environments are from [gym-minigrid](https://github.com/maximecb/gym-minigrid). The recurrent neural networks are used to train a machine translation model under Multi30K English-French dataset, which can be found at [here](https://github.com/multi30k/dataset).
+
 
 ## Installation:
 See requirement.txt, please run the code under python 3.7 or later.
@@ -26,64 +27,71 @@ pip install -e .
 ```
 
 ## Environments:
-- `MiniGrid-FourRooms-v1` - Four room environment where the agent always starts from room 1.
-- `MiniGrid-FourRooms-v2` - Four room environment where the agent always starts from room 2.
-- `MiniGrid-FourRooms-v3` - Four room environment where the agent always starts from room 3.
-
-- `MiniGrid-MultiRoom-N2-v00`- Multi-room environment with seed range [0, 4], each seed correspondes to a unique setting (eg. room size, room position, agent starting position, target position, etc.)
+- `MiniGrid-MultiRoom-N2-v00`- Multi-room environment with seed range [0, 10], each seed correspondes to a unique setting (eg. room size, room position, agent starting position, target position, etc.)
 - `MiniGrid-MultiRoom-N2-v0`- Multi-room environment with seed 0.
 - `MiniGrid-MultiRoom-N2-v1`- Multi-room environment with seed 1.
 - `MiniGrid-MultiRoom-N2-v2`- Multi-room environment with seed 2.
 - `MiniGrid-MultiRoom-N2-v5`- Multi-room environment with seed 5.
 - `MiniGrid-MultiRoom-N2-v6`- Multi-room environment with seed 6.
 - `MiniGrid-MultiRoom-N2-v7`- Multi-room environment with seed 7.
+- We have created the environment to seed 19.
 
 ## Example of Training/Testing RL Models:
-#### Train, test, save trajectories on `MiniGrid-FourRooms-v1` environment, using PPO algorithm.
-1, Train the agent on the `MiniGrid-FourRooms-v1` environment using PPO.
+#### Train, test, save trajectories on `MiniGrid-MultiRoom-N2-v00` environment, using PPO algorithm.
+1, Train the agent on the `MiniGrid-MultiRoom-N2-v00` environment using PPO.
 ```
-python -m scripts.train --algo ppo --env MiniGrid-FourRooms-v1 --model FourRoom1 --frames 204800
+python -m scripts.train --algo ppo --env MiniGrid-MultiRoom-N2-v00 --model mr --frames 204800
 ```
 
-2, Test the agent on the `MiniGrid-FourRooms-v1` and save the trajectories.
+2, Test the agent on the `MiniGrid-MultiRoom-N2-v00` and save the trajectories.
 ```
-python -m scripts.train --algo ppo --env MiniGrid-FourRooms-v1 --model FourRoom1 --frames 409600 --test 1
+python -m scripts.evaluate --env MiniGrid-MultiRoom-N2-v00 --model mr
 ```
-The trajectories are saved in `rl-starter-files/storage/FourRoom1/probabilities.csv`
+The trajectories are saved in `rl-starter-files/storage/mr/value_traj.csv`
 
-#### Test and save trajectories on `MiniGrid-FourRooms-v1` environment, using PPO algorithm with Dirichlet Protection Mechanism.
+#### Train, Test and save trajectories on `MiniGrid-MultiRoom-N2-v00` environment, using PPO algorithm with DP-SGD.
 Test the agent on the `MiniGrid-FourRooms-v1` and save the trajectories. Apply Dirichlet Protection with **k = 1**.
 ```
-python -m scripts.train --algo ppo --env MiniGrid-FourRooms-v1 --model FourRoom_protected --frames 204800
-python -m scripts.train --algo ppo --env MiniGrid-FourRooms-v1 --model FourRoom_protected --frames 409600 --test 1 --k 1
+python -m scripts.train --algo ppo --env MiniGrid-MultiRoom-N2-v00 --model mr_dp --frames 204800 --sigma 0.8
+python -m scripts.evaluate --env MiniGrid-MultiRoom-N2-v00 --model mr_dp
 ```
-The trajectories are saved in `rl-starter-files/storage/FourRoom_protected/probabilities.csv`
+The trajectories are saved in `rl-starter-files/storage/mr/value_traj.csv`
+
+#### Train with different advantage estimation methods
+1, TD-Error
+```
+python -m scripts.train --algo ppo --env MiniGrid-MultiRoom-N2-v00 --model mr --frames 204800 --gae-lambda 0
+```
+
+2, N-Step Advantage
+```
+python -m scripts.train --algo ppo --env MiniGrid-MultiRoom-N2-v00 --model mr --frames 204800 --gae-lambda 3 (or any integer)
+```
+
+3, Generalized Advantage Estimation
+```
+python -m scripts.train --algo ppo --env MiniGrid-MultiRoom-N2-v00 --model mr --frames 204800 --gae-lambda 0.95 (or any float between 0 and 1)
+```
 
 #### Visualization
 1, Visualize agent's behavior:
 ```
-python -m scripts.visualize --env MiniGrid-FourRooms-v1 --model FourRoom1
+python -m scripts.visualize --env MiniGrid-MultiRoom-N2-v00 --model mr
 ```
 
 2, Visualize the reward plot and other plots:
 ```
-tensorboard --logdir rl-starter-files/storage/FourRoom1
+tensorboard --logdir rl-starter-files/storage/mr
 ```
 
-3, Visualize the multiple plots simultaneously:
-Create a new directory `rl-starter-files/storage/fr_plots/` and copy **events.out.tfevents** files to `fr_plots/` directory. An example is [here](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files/storage/mr_plots). Then run:
-```
-tensorboard --logdir rl-starter-files/storage/fr_plots
-```
-
-**More examples and visualizations can be found on the README in [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid) and [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files)**
+**More examples and visualizations can be found on the README in [gym-minigrid] and [rl-starter-files]**
 
 ## Examples of Membership Attack:
-1, Membership attack on supervised learning: [Mem_att_toy_cifar10.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/Mem_att_toy_cifar10.ipynb).
+1, Membership attack on supervised learning: [Mem_att_toy_cifar10.ipynb].
 
-2, Membership attack on RL models under FourRooms environment: [RL_Men_att_four_room.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/RL_Men_att_four_room.ipynb)
+2, Membership attack on RL models under FourRooms environment: [RL_Men_att_four_room.ipynb]
 
-3, Membership attack on RL models under MultiRooms environment: [RL_Men_att_multi_rooms.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/RL_Men_att_multi_rooms.ipynb)
+3, Membership attack on RL models under MultiRooms environment: [RL_Men_att_multi_rooms.ipynb]
 
 #### Note:
 
