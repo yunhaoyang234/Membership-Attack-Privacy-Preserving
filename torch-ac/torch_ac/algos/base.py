@@ -227,9 +227,9 @@ class BaseAlgo(ABC):
             next_value = self.values[i+1] if i < self.num_frames_per_proc - 1 else next_value
             next_advantage = self.advantages[i+1] if i < self.num_frames_per_proc - 1 else 0
             if self.gae_lambda > 1:
-                next_n = i+self.gae_lambda+1
-                next_n_val = self.values[next_n] if next_n < self.num_frames_per_proc - 1 else next_value
-                self.advantages[i] = next_advantage * next_mask - self.discount**self.gae_lambda*next_n_val + self.rewards[i]
+                n_val, dc = int(self.gae_lambda), self.discount
+                next_reward = self.rewards[i+1] if i < self.num_frames_per_proc - 2 else self.rewards[-1]
+                self.advantages[i] = dc*next_advantage*next_mask + dc*next_rewward + dc*next_value*next_mask - self.values[i]
             else:
                 delta = self.rewards[i] + self.discount * next_value * next_mask - self.values[i]
                 self.advantages[i] = delta + self.discount * self.gae_lambda * next_advantage * next_mask
