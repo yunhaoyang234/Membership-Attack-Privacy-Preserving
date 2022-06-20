@@ -143,26 +143,26 @@ while log_done_counter < args.episodes:
 
 end_time = time.time()
 
-corr = []
-for i in range(idx):
-    v, r = np.array(value_[i]), np.array(reward_[i])
-    v, r = np.round((v - np.min(v)) / (np.max(v) - np.min(v)), 3), np.round((r - np.min(r)) / (1 - np.min(r)), 3)
-    c = np.corrcoef(v, r)[0][1]
-    # print(list(v), list(r), c)
-    # print()
-    if np.isnan(c):
-        c = 0
-    value_list.append(list(v))
-    reward_list.append(list(r))
-    env_list.append(args.env)
-    label_list.append(args.label)
-    corr_list.append(c)
-    corr.append(c)
-df1 = pd.DataFrame()
-df1['value'], df1['reward'], df1['env'], df1['label'], df1['corr'] = value_list, reward_list, env_list, label_list, corr_list
-df1.to_csv(traj_dir, index=False)
-print(np.mean(corr))
-exit()
+# corr = []
+# for i in range(idx):
+#     v, r = np.array(value_[i]), np.array(reward_[i])
+#     v, r = np.round((v - np.min(v)) / (np.max(v) - np.min(v)), 3), np.round((r - np.min(r)) / (1 - np.min(r)), 3)
+#     c = np.corrcoef(v, r)[0][1]
+#     # print(list(v), list(r), c)
+#     # print()
+#     if np.isnan(c):
+#         c = 0
+#     value_list.append(list(v))
+#     reward_list.append(list(r))
+#     env_list.append(args.env)
+#     label_list.append(args.label)
+#     corr_list.append(c)
+#     corr.append(c)
+# df1 = pd.DataFrame()
+# df1['value'], df1['reward'], df1['env'], df1['label'], df1['corr'] = value_list, reward_list, env_list, label_list, corr_list
+# df1.to_csv(traj_dir, index=False)
+# print(np.mean(corr))
+# exit()
 
 # Print logs
 num_frames = sum(logs["num_frames_per_episode"])
