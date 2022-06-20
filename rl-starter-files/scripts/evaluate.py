@@ -3,6 +3,7 @@ import time
 import torch
 from torch_ac.utils.penv import ParallelEnv
 import numpy as np
+import pandas as pd
 
 import utils
 
@@ -29,6 +30,7 @@ parser.add_argument("--memory", action="store_true", default=False,
 parser.add_argument("--text", action="store_true", default=False,
                     help="add a GRU to the model")
 parser.add_argument("--sigma", type=float, default=0, help="sigma for Gaussian mechanism")
+parser.add_argument("--label", type=int, default=1, help="1 for in, 0 for out")
 args = parser.parse_args()
 
 # Set seed for all randomness sources
@@ -56,6 +58,19 @@ agent = utils.Agent(env.observation_space, env.action_space, model_dir,
                     device=device, argmax=args.argmax, num_envs=args.procs,
                     use_memory=args.memory, use_text=args.text)
 print("Agent loaded\n")
+
+traj_dir = 'storage/' + args.model + '/critic_traj.csv'
+try:
+    df = pd.read_csv(traj_dir)
+except FileNotFoundError: 
+    df = pd.DataFrame()
+    df['value'] = []
+    df['reward'] = []
+    df['env'] = []
+    df['label'] = []
+    df['corr'] = []
+
+value_list, reward_list, env_list, label_list, corr_list = list(df['value']), list(df['reward']), list(df['env']), list(df['label']), list(df['corr'])
 
 # Add noise
 if args.sigma > 0:
@@ -128,18 +143,26 @@ while log_done_counter < args.episodes:
 
 end_time = time.time()
 
-# corr = []
-# for i in range(idx):
-#     v, r = np.array(value_[i]), np.array(reward_[i])
-#     v, r = np.round((v - np.min(v)) / (np.max(v) - np.min(v)), 3), np.round((r - np.min(r)) / (1 - np.min(r)), 3)
-#     c = np.corrcoef(v, r)[0][1]
-#     # print(list(v), list(r), c)
-#     # print()
-#     if np.isnan(c):
-#         c = 0
-#     corr.append(c)
-# print(np.mean(corr))
-# exit()
+corr = []
+for i in range(idx):
+    v, r = np.array(value_[i]), np.array(reward_[i])
+    v, r = np.round((v - np.min(v)) / (np.max(v) - np.min(v)), 3), np.round((r - np.min(r)) / (1 - np.min(r)), 3)
+    c = np.corrcoef(v, r)[0][1]
+    # print(list(v), list(r), c)
+    # print()
+    if np.isnan(c):
+        c = 0
+    value_list.append(list(v))
+    reward_list.append(list(r))
+    env_list.append(args.env)
+    label_list.append(args.label)
+    corr_list.append(c)
+    corr.append(c)
+df1 = pd.DataFrame()
+df1['value'], df1['reward'], df1['env'], df1['label'], df1['corr'] = value_list, reward_list, env_list, label_list, corr_list
+df1.to_csv(traj_dir, index=False)
+print(np.mean(corr))
+exit()
 
 # Print logs
 num_frames = sum(logs["num_frames_per_episode"])
