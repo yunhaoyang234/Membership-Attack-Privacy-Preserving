@@ -11,7 +11,7 @@ class BaseAlgo(ABC):
     """The base class for RL algorithms."""
 
     def __init__(self, envs, acmodel, device, num_frames_per_proc, discount, lr, gae_lambda, entropy_coef,
-                 value_loss_coef, max_grad_norm, recurrence, preprocess_obss, reshape_reward, k=0, a=0, valid_envs=None):
+                 value_loss_coef, max_grad_norm, recurrence, preprocess_obss, reshape_reward, k=0, a=0, sigma=0, valid_envs=None):
         """
         Initializes a `BaseAlgo` instance.
 
@@ -66,6 +66,7 @@ class BaseAlgo(ABC):
         self.reshape_reward = reshape_reward
         self.k = k
         self.a = a
+        self.sigma = sigma
 
         # Control parameters
 
