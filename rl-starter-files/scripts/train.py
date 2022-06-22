@@ -64,7 +64,6 @@ parser.add_argument("--text", action="store_true", default=False,
                     help="add a GRU to the model to handle text input")
 parser.add_argument("--k", type=int, default=0, help="k for dirichlet distribution")
 parser.add_argument("--a", type=int, default=0, help="bias for dirichlet distribution")
-parser.add_argument("--sigma", type=int, default=0, help="variance for DP-SGD")
 parser.add_argument("--test", type=int, default=0, help="1 for testing, 0 for training")
 
 args = parser.parse_args()
@@ -140,7 +139,7 @@ if args.algo == "a2c":
 elif args.algo == "ppo":
     algo = torch_ac.PPOAlgo(envs, acmodel, device, args.frames_per_proc, args.discount, args.lr, args.gae_lambda,
                             args.entropy_coef, args.value_loss_coef, args.max_grad_norm, args.recurrence,
-                            args.optim_eps, args.clip_eps, args.epochs, args.batch_size, preprocess_obss, k=args.k, a=args.a, sigma=args.sigma)
+                            args.optim_eps, args.clip_eps, args.epochs, args.batch_size, preprocess_obss, k=args.k, a=args.a)
 else:
     raise ValueError("Incorrect algorithm name: {}".format(args.algo))
 
