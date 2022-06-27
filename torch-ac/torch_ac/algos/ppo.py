@@ -106,7 +106,7 @@ class PPOAlgo(BaseAlgo):
                 grad_norm = sum(p.grad.data.norm(2).item() ** 2 for p in self.acmodel.parameters()) ** 0.5
                 torch.nn.utils.clip_grad_norm_(self.acmodel.parameters(), self.max_grad_norm)
                 if self.sigma > 0:
-                    for param in self.acmodel.critic.parameters():
+                    for param in self.acmodel.parameters():
                         param.grad += torch.normal(mean=0, std=self.sigma, size=param.grad.shape).to(self.device)
                 self.optimizer.step()
 
