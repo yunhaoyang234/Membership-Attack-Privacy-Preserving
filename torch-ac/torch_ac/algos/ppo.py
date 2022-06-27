@@ -23,7 +23,7 @@ class PPOAlgo(BaseAlgo):
 
         assert self.batch_size % self.recurrence == 0
 
-        self.optimizer = torch.optim.Adam(self.acmodel.parameters(), lr, eps=adam_eps)
+        self.optimizer = torch.optim.Adam(self.acmodel.parameters(), lr, eps=adam_eps, weight_decay=0)
         self.batch_num = 0
 
     def update_parameters(self, exps):
@@ -106,8 +106,8 @@ class PPOAlgo(BaseAlgo):
                 grad_norm = sum(p.grad.data.norm(2).item() ** 2 for p in self.acmodel.parameters()) ** 0.5
                 torch.nn.utils.clip_grad_norm_(self.acmodel.parameters(), self.max_grad_norm)
                 if self.sigma > 0:
-                    for param in acmodel.parameters():
-                        param.grad += torch.normal(mean=0, std=self.sigma, size=param.grad.shape).to(device)
+                    for param in self.acmodel.critic.parameters():
+                        param.grad += torch.normal(mean=0, std=self.sigma, size=param.grad.shape).to(self.device)
                 self.optimizer.step()
 
                 # Update log values
