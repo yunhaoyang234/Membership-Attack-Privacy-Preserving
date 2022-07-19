@@ -78,6 +78,13 @@ tensorboard --logdir rl-starter-files/storage/fr_plots
 
 **More examples and visualizations can be found on the README in [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid) and [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files)**
 
+### Enforcing Differential Privacy
+To apply the Gaussian Privacy Module to the trained agent, run
+```
+python -m scripts.evaluate --env MiniGrid-FourRooms-v1 --model FourRoom1 --sigma 0.1
+```
+Note that you can change the name of environment and model. Sigma is the noise variance of the Gaussian Privacy Module.
+
 ### Code for Reproducing Differential Privacy and Membership Attack:
 Membership attack on RL models under MultiRooms environment: [Reinforcement_Learning.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/Reinforcement_Learning.ipynb)
 
