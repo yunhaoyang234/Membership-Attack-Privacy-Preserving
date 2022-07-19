@@ -1,8 +1,8 @@
-# Membership Attacks on Reinforcement Learning
+## Membership Attacks on Reinforcement Learning
 
 Code for performing membership attacks on reinforcement leanring algorithms. The reinforcement leanring algorithms are implemented in [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files) and the environments are from [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid).
 
-## Installation:
+### Installation:
 See requirement.txt, please run the code under python 3.7 or later.
 Run
 `pip install -r requirement.txt`
@@ -25,7 +25,7 @@ cd torch-ac
 pip install -e .
 ```
 
-## Environments:
+### Environments:
 - `MiniGrid-FourRooms-v1` - Four room environment where the agent always starts from room 1.
 - `MiniGrid-FourRooms-v2` - Four room environment where the agent always starts from room 2.
 - `MiniGrid-FourRooms-v3` - Four room environment where the agent always starts from room 3.
@@ -38,7 +38,7 @@ pip install -e .
 - `MiniGrid-MultiRoom-N2-v6`- Multi-room environment with seed 6.
 - `MiniGrid-MultiRoom-N2-v7`- Multi-room environment with seed 7.
 
-## Example of Training/Testing RL Models:
+### Example of Training/Testing RL Models:
 #### Train, test, save trajectories on `MiniGrid-FourRooms-v1` environment, using PPO algorithm.
 1, Train the agent on the `MiniGrid-FourRooms-v1` environment using PPO.
 ```
@@ -78,12 +78,22 @@ tensorboard --logdir rl-starter-files/storage/fr_plots
 
 **More examples and visualizations can be found on the README in [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid) and [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files)**
 
-## Examples of Membership Attack:
-1, Membership attack on supervised learning: [Mem_att_toy_cifar10.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/Mem_att_toy_cifar10.ipynb).
+### Code for Reproducing Differential Privacy and Membership Attack:
+Membership attack on RL models under MultiRooms environment: [Reinforcement_Learning.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/Reinforcement_Learning.ipynb)
 
-2, Membership attack on RL models under FourRooms environment: [RL_Men_att_four_room.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/RL_Men_att_four_room.ipynb)
+## Membership Attacks on Image Classification
+### Dataset
+Cifar 10 Dataset that can be imported in Tensorflow or Keras.
 
-3, Membership attack on RL models under MultiRooms environment: [RL_Men_att_multi_rooms.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/RL_Men_att_multi_rooms.ipynb)
+### Code for Reproducing Differential Privacy and Membership Attack:
+[Image_Classification.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/Image_Classification.ipynb)
+
+## Membership Attacks on Machine Translation
+### Dataset
+[Multi-30K English-French](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/data).
+
+### Code for Reproducing Differential Privacy and Membership Attack:
+[Machine_Translation.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/Machine_Translation.ipynb)
 
 #### Note:
 
