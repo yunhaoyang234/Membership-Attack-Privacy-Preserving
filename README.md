@@ -51,14 +51,6 @@ python -m scripts.train --algo ppo --env MiniGrid-FourRooms-v1 --model FourRoom1
 ```
 The trajectories are saved in `rl-starter-files/storage/FourRoom1/probabilities.csv`
 
-#### Test and save trajectories on `MiniGrid-FourRooms-v1` environment, using PPO algorithm with Dirichlet Protection Mechanism.
-Test the agent on the `MiniGrid-FourRooms-v1` and save the trajectories. Apply Dirichlet Protection with **k = 1**.
-```
-python -m scripts.train --algo ppo --env MiniGrid-FourRooms-v1 --model FourRoom_protected --frames 204800
-python -m scripts.train --algo ppo --env MiniGrid-FourRooms-v1 --model FourRoom_protected --frames 409600 --test 1 --k 1
-```
-The trajectories are saved in `rl-starter-files/storage/FourRoom_protected/probabilities.csv`
-
 #### Visualization
 1, Visualize agent's behavior:
 ```
