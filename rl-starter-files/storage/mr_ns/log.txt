@@ -1,6 +1,6 @@
 /Users/yunhaoyang/Desktop/prav-pres-rl/rl-starter-files/scripts/train.py --algo ppo --env MiniGrid-MultiRoom-N2-v00 --model mr --frames 204800
 
-Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v00', epochs=4, frames=204800, frames_per_proc=None, gae_lambda=0, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='mr', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v00', epochs=4, frames=204800, frames_per_proc=None, gae_lambda=3, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='mr', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
 
 Device: cpu
 
