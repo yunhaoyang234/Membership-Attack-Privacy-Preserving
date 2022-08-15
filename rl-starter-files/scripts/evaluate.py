@@ -30,7 +30,7 @@ parser.add_argument("--memory", action="store_true", default=False,
 parser.add_argument("--text", action="store_true", default=False,
                     help="add a GRU to the model")
 parser.add_argument("--sigma", type=float, default=0, help="sigma for Gaussian mechanism")
-parser.add_argument("--label", type=int, default=1, help="1 for in, 0 for out")
+parser.add_argument("--label", type=int, default=-1, help="1 for in, 0 for out")
 args = parser.parse_args()
 
 # Set seed for all randomness sources
@@ -74,9 +74,9 @@ value_list, reward_list, env_list, label_list, corr_list = list(df['value']), li
 
 # Add noise
 if args.sigma > 0:
-    for param in agent.acmodel.actor.state_dict():
-        size = agent.acmodel.actor.state_dict()[param].shape
-        agent.acmodel.actor.state_dict()[param] += torch.Tensor(np.random.normal(0, args.sigma, size)).to(device)
+    for param in agent.acmodel.critic.state_dict():
+        size = agent.acmodel.critic.state_dict()[param].shape
+        agent.acmodel.critic.state_dict()[param] += torch.Tensor(np.random.normal(0, args.sigma, size)).to(device)
 
 # Initialize logs
 
@@ -114,27 +114,24 @@ while log_done_counter < args.episodes:
             logs["num_frames_per_episode"].append(log_episode_num_frames[i].item())
             logs["value"].append(prev_val[i])
             logs["reward"].append(rewards[i])
+
             if i==0:
-                v_t_1 = value_[idx][0]
+                v_t_1 = 0
                 r_t = rewards[0]
-                v_t = value_[idx][0]
-                a_t = r_t + v_t_1 - v_t
+                v_t = value_[idx][-1]
+                a_t = r_t - v_t
                 reward_[idx].append(round(r_t, 3))
+                r_t = 0
                 for t in range(len(value_[idx])-2, -1, -1):
                     v_t_1 = value_[idx][t+1]
                     v_t = value_[idx][t]
-                    a_t = min(0.99*v_t_1 - v_t + 0.95*0.99*a_t, r_t)
-                    reward_[idx].append(round(a_t, 3))
+                    a_t = 0.99*v_t_1 - v_t + 0.95*0.99*a_t + r_t
+                    reward_[idx].append(round(a_t+v_t, 3))
                 reward_[idx].reverse()
 
                 idx += 1
                 value_.append([])
                 reward_.append([])
-
-                # print(value_[0])
-                # print(reward_[0])
-                # print(np.corrcoef(np.array(value_[0]), np.array(reward_[0]))[0][1])
-                # exit()
 
     mask = 1 - torch.tensor(dones, device=device, dtype=torch.float)
     log_episode_return *= mask
@@ -143,26 +140,27 @@ while log_done_counter < args.episodes:
 
 end_time = time.time()
 
-corr = []
-for i in range(idx):
-    v, r = np.array(value_[i]), np.array(reward_[i])
-    v, r = np.round((v - np.min(v)) / (np.max(v) - np.min(v)), 3), np.round((r - np.min(r)) / (1 - np.min(r)), 3)
-    c = np.corrcoef(v, r)[0][1]
-    # print(list(v), list(r), c)
-    # print()
-    if np.isnan(c):
-        c = 0
-    value_list.append(list(v))
-    reward_list.append(list(r))
-    env_list.append(args.env)
-    label_list.append(args.label)
-    corr_list.append(c)
-    corr.append(c)
-df1 = pd.DataFrame()
-df1['value'], df1['reward'], df1['env'], df1['label'], df1['corr'] = value_list, reward_list, env_list, label_list, corr_list
-df1.to_csv(traj_dir, index=False)
-print(np.mean(corr))
-# exit()
+if args.label >= 0:
+    corr = []
+    for i in range(idx):
+        v, r = np.array(value_[i]), np.array(reward_[i])
+        v, r = np.round((v - np.min(v)) / (np.max(v) - np.min(v)), 3), np.round((r - np.min(r)) / (1 - np.min(r)), 3)
+        c = np.corrcoef(v, r)[0][1]
+        # print(list(v), list(r), c)
+        # print()
+        if np.isnan(c):
+            c = 0
+        value_list.append(list(v))
+        reward_list.append(list(r))
+        env_list.append(args.env)
+        label_list.append(args.label)
+        corr_list.append(c)
+        corr.append(c)
+    df1 = pd.DataFrame()
+    df1['value'], df1['reward'], df1['env'], df1['label'], df1['corr'] = value_list, reward_list, env_list, label_list, corr_list
+    df1.to_csv(traj_dir, index=False)
+    print(np.mean(corr))
+    exit()
 
 # Print logs
 num_frames = sum(logs["num_frames_per_episode"])
