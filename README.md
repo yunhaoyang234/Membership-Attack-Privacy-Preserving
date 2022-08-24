@@ -1,6 +1,6 @@
 ## Membership Attacks on Reinforcement Learning
 
-Code for performing membership attacks on reinforcement leanring algorithms. The reinforcement leanring algorithms are implemented in [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files) and the environments are from [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid).
+Code for performing membership attacks and enforcing differential privacy on reinforcement leanring algorithms. The reinforcement leanring algorithms are implemented in [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files) and the environments are from [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid).
 
 ### Installation:
 See requirement.txt, please run the code under python 3.7 or later.
