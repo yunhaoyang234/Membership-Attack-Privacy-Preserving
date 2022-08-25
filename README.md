@@ -120,6 +120,16 @@ Cifar 10 Dataset that can be imported in Tensorflow or Keras.
 ## Membership Attacks on Machine Translation
 ### Dataset
 [Multi-30K English-French](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/data).
+```
+@misc{multi30k,
+   title={Multi30K: Multilingual {English-German} Image Descriptions},
+   DOI={10.18653/v1/w16-3210},
+   journal={Proceedings of the 5th Workshop on Vision and Language},
+   publisher={Association for Computational Linguistics},
+   author={Elliott, Desmond and Frank, Stella and Sima’an, Khalil and Specia, Lucia},
+   year={2016}
+}
+```
 
 ### Code for Reproducing Differential Privacy and Membership Attack:
 [Machine_Translation.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/Machine_Translation.ipynb)
