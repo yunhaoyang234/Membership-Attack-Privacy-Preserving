@@ -2,7 +2,35 @@
 
 ### Please note that the code and data is larger than 10 MB.
 
-Code for performing membership attacks and enforcing differential privacy on reinforcement leanring algorithms. The reinforcement leanring algorithms are implemented in [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files) and the environments are from [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid).
+Code for performing membership attacks and enforcing differential privacy on reinforcement leanring algorithms. The reinforcement leanring algorithms are implemented in [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files) and the environments are from [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid). We modified these libraries and included them in our repository:
+```
+@misc{gym_minigrid,
+  author = {Chevalier-Boisvert, Maxime and Willems, Lucas and Pal, Suman},
+  title = {Minimalistic Gridworld Environment for OpenAI Gym},
+  year = {2018},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/maximecb/gym-minigrid}},
+}
+
+@misc{rl_starter,
+  author = {Lucas Willems},
+  title = {RL-Starter-Files},
+  year = {2018},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/lcswillems/rl-starter-files}},
+}
+
+@misc{torch_ac,
+  author = {Lucas Willems},
+  title = {PyTorch Actor-Critic deep reinforcement learning algorithms: A2C and PPO},
+  year = {2018},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/lcswillems/torch-ac}},
+}
+```
 
 ### Installation:
 See requirement.txt, please run the code under python 3.7 or later.
