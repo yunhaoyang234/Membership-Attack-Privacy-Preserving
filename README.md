@@ -1,6 +1,6 @@
-# Membership Attacks on Reinforcement Learning Models and Recurrent Models
+# Membership Inference Attacks on Actor-Critic Algorithm
 
-Code for performing membership attacks on reinforcement leanring algorithms and recurrent neural networks. The reinforcement leanring algorithms are implemented in [rl-starter-files](https://github.com/lcswillems/rl-starter-files) and the environments are from [gym-minigrid](https://github.com/maximecb/gym-minigrid). The recurrent neural networks are used to train a machine translation model under Multi30K English-French dataset, which can be found at [here](https://github.com/multi30k/dataset).
+Code for performing membership inference attacks on actor-critic algorithms. The reinforcement leanring algorithms are implemented in [rl-starter-files](https://github.com/lcswillems/rl-starter-files) and the environments are from [gym-minigrid](https://github.com/maximecb/gym-minigrid).
 
 
 ## Installation:
