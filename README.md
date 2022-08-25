@@ -111,14 +111,14 @@ Note that you can change the name of environment and model. Sigma is the noise v
 Membership attack on RL models under MultiRooms environment: [Reinforcement_Learning.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/Reinforcement_Learning.ipynb)
 
 ## Membership Attacks on Image Classification
-### Dataset
+#### Dataset
 Cifar 10 Dataset that can be imported in Tensorflow or Keras.
 
-### Code for Reproducing Differential Privacy and Membership Attack:
+#### Code for Reproducing Differential Privacy and Membership Attack:
 [Image_Classification.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/Image_Classification.ipynb)
 
 ## Membership Attacks on Machine Translation
-### Dataset
+#### Dataset
 [Multi-30K English-French](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/data).
 ```
 @misc{multi30k,
@@ -131,7 +131,7 @@ Cifar 10 Dataset that can be imported in Tensorflow or Keras.
 }
 ```
 
-### Code for Reproducing Differential Privacy and Membership Attack:
+#### Code for Reproducing Differential Privacy and Membership Attack:
 [Machine_Translation.ipynb](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/blob/main/Machine_Translation.ipynb)
 
 #### Note:
