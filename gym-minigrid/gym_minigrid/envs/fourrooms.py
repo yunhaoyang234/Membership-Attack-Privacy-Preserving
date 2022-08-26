@@ -78,7 +78,8 @@ class FourRoomsEnv_(MiniGridEnv):
     Can specify agent and goal position, if not it set at random.
     """
 
-    def __init__(self, agent_pos=None, goal_pos=None):
+    def __init__(self, agent_pos=None, goal_pos=None, seeds=0):
+        self.seeds = seeds
         self._agent_default_pos = agent_pos
         self._goal_default_pos = (11,11)
         super().__init__(grid_size=13, max_steps=3000)
@@ -139,11 +140,18 @@ class FourRoomsEnv_(MiniGridEnv):
         obs, reward, done, info = MiniGridEnv.step(self, action)
         return obs, reward, done, info
 
+    def reset(self):
+        if type(self.seeds)==int:
+            self.seed(self.seeds)
+        else:
+            self.seed(self.seeds[np.random.randint(0,len(self.seeds))])
+        return super().reset()
+
 class FourRoomsEnv_1(FourRoomsEnv_):
     def __init__(self, agent_pos=None, goal_pos=None):
         a = np.random.randint(1,5)
         b = np.random.randint(1,5)
-        super().__init__(agent_pos=(1,1))
+        super().__init__(agent_pos=(a,b))
 
 class FourRoomsEnv_2(FourRoomsEnv_):
     def __init__(self, agent_pos=None, goal_pos=None):

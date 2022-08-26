@@ -44,6 +44,20 @@ class DoorKeyEnv(MiniGridEnv):
 
         self.mission = "use the key to open the door and then get to the goal"
 
+class DoorKeyEnv_(DoorKeyEnv):
+    def __init__(self, size=8, seeds=0):
+        self.seeds = seeds
+        super().__init__(
+            size=size,
+        )
+
+    def reset(self):
+        if type(self.seeds)==int:
+            self.seed(self.seeds)
+        else:
+            self.seed(self.seeds[np.random.randint(0,len(self.seeds))])
+        return super().reset()
+
 class DoorKeyEnv6x6_1(MiniGridEnv):
     """
     Environment with a door and key, sparse reward

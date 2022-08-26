@@ -86,6 +86,18 @@ class LavaCrossingEnv(CrossingEnv):
     def __init__(self):
         super().__init__(size=9, num_crossings=1)
 
+class LavaCrossingEnv_(CrossingEnv):
+    def __init__(self, seeds):
+        self.seeds = seeds
+        super().__init__(size=9, num_crossings=1) # can be changed
+
+    def reset(self):
+        if type(self.seeds)==int:
+            self.seed(self.seeds)
+        else:
+            self.seed(self.seeds[np.random.randint(0,len(self.seeds))])
+        return super().reset()
+
 class LavaCrossingS9N2Env(CrossingEnv):
     def __init__(self):
         super().__init__(size=9, num_crossings=2)
