@@ -8,7 +8,6 @@ setup(
     description='Minimalistic gridworld package for OpenAI Gym',
     packages=['gym_minigrid', 'gym_minigrid.envs'],
     install_requires=[
-        'gym>=0.9.6',
-        'numpy>=1.15.0'
+        'gym==0.18.3',
     ]
 )
