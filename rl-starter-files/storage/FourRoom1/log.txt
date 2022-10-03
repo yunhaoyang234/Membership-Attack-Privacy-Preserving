@@ -160,3 +160,57 @@ U 8 | F 016384 | FPS 3043 | D 5 | rR:μσmM 0.05 0.12 0.00 0.38 | F:μσmM 192.6
 U 9 | F 018432 | FPS 3016 | D 6 | rR:μσmM 0.03 0.12 0.00 0.50 | F:μσmM 194.4 21.8 110.0 200.0 | H 1.934 | V -0.000 | pL -0.007 | vL 0.001 | ∇ 0.011
 U 10 | F 020480 | FPS 3089 | D 6 | rR:μσmM 0.07 0.18 0.00 0.72 | F:μσmM 187.6 33.8 63.0 200.0 | H 1.931 | V 0.011 | pL -0.010 | vL 0.002 | ∇ 0.024
 Status saved
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env MiniGrid-MultiRoom-N2-v5 --model FourRoom1 --frames 40960
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v5', epochs=4, frames=40960, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env MiniGrid-MultiRoom-N2-v5 --model FourRoom1 --frames 40960 --test 1
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v5', epochs=4, frames=40960, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=1, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+Environments loaded
+
+Training status loaded
+
+Observations preprocessor loaded
+Model loaded
+
+ACModel(
+  (image_conv): Sequential(
+    (0): Conv2d(3, 16, kernel_size=(2, 2), stride=(1, 1))
+    (1): ReLU()
+    (2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+    (3): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1))
+    (4): ReLU()
+    (5): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1))
+    (6): ReLU()
+  )
+  (actor): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=7, bias=True)
+  )
+  (critic): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=1, bias=True)
+  )
+)
+
+Optimizer loaded
+
+U 11 | F 022528 | FPS 4415 | D 0 | rR:μσmM 0.19 0.32 0.00 0.86 | F:μσmM 14.4 27.0 0.0 87.0
+U 12 | F 024576 | FPS 4477 | D 0 | rR:μσmM 0.13 0.23 0.00 0.72 | F:μσmM 177.5 43.0 63.0 200.0
+U 13 | F 026624 | FPS 4538 | D 1 | rR:μσmM 0.03 0.07 0.00 0.21 | F:μσmM 197.1 7.8 175.0 200.0
+U 14 | F 028672 | FPS 4508 | D 1 | rR:μσmM 0.15 0.24 0.00 0.70 | F:μσmM 173.9 44.7 66.0 200.0
+U 15 | F 030720 | FPS 4511 | D 2 | rR:μσmM 0.15 0.24 0.00 0.63 | F:μσmM 172.9 43.6 82.0 200.0
+U 16 | F 032768 | FPS 4582 | D 2 | rR:μσmM 0.21 0.29 0.00 0.77 | F:μσmM 161.4 55.0 51.0 200.0
+U 17 | F 034816 | FPS 4587 | D 3 | rR:μσmM 0.10 0.22 0.00 0.71 | F:μσmM 182.4 40.7 64.0 200.0
+U 18 | F 036864 | FPS 4613 | D 3 | rR:μσmM 0.07 0.19 0.00 0.71 | F:μσmM 188.0 34.8 64.0 200.0
+U 19 | F 038912 | FPS 4494 | D 4 | rR:μσmM 0.08 0.16 0.00 0.49 | F:μσmM 186.7 26.6 113.0 200.0
+U 20 | F 040960 | FPS 4511 | D 4 | rR:μσmM 0.13 0.22 0.00 0.78 | F:μσmM 178.9 40.5 48.0 200.0
+Status saved
