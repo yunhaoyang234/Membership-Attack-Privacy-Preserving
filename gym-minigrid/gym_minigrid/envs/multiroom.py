@@ -280,7 +280,13 @@ class MultiRoomEnvN2(MultiRoomEnv):
 class MultiRoomEnvN20(MultiRoomEnvN2):
     def __init__(self):
         super().__init__(
-            seeds=[0,1,2,3,4]
+            seeds=list(range(10))
+        )
+
+class MultiRoomEnvN20v(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=list(range(10, 20))
         )
 
 class MultiRoomEnvN2v0(MultiRoomEnvN2):
@@ -301,6 +307,18 @@ class MultiRoomEnvN2v2(MultiRoomEnvN2):
             seeds=2
         )
 
+class MultiRoomEnvN2v3(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=3
+        )
+
+class MultiRoomEnvN2v4(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=4
+        )
+
 class MultiRoomEnvN2v5(MultiRoomEnvN2):
     def __init__(self):
         super().__init__(
@@ -319,6 +337,77 @@ class MultiRoomEnvN2v7(MultiRoomEnvN2):
             seeds=7
         )
 
+class MultiRoomEnvN2v8(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=8
+        )
+
+class MultiRoomEnvN2v9(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=9
+        )
+
+class MultiRoomEnvN2v10(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=10
+        )
+
+class MultiRoomEnvN2v11(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=11
+        )
+
+class MultiRoomEnvN2v12(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=12
+        )
+
+class MultiRoomEnvN2v13(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=13
+        )
+
+class MultiRoomEnvN2v14(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=14
+        )
+
+class MultiRoomEnvN2v15(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=15
+        )
+
+class MultiRoomEnvN2v16(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=16
+        )
+
+class MultiRoomEnvN2v17(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=17
+        )
+
+class MultiRoomEnvN2v18(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=18
+        )
+
+class MultiRoomEnvN2v19(MultiRoomEnvN2):
+    def __init__(self):
+        super().__init__(
+            seeds=19
+        )
 
 register(
     id='MiniGrid-MultiRoom-N2-S4-v0',
@@ -341,31 +430,12 @@ register(
 )
 
 register(
-    id='MiniGrid-MultiRoom-N2-v0',
-    entry_point='gym_minigrid.envs:MultiRoomEnvN2v0'
+    id='MiniGrid-MultiRoom-N2-v000',
+    entry_point='gym_minigrid.envs:MultiRoomEnvN20v'
 )
 
-register(
-    id='MiniGrid-MultiRoom-N2-v1',
-    entry_point='gym_minigrid.envs:MultiRoomEnvN2v1'
-)
-
-register(
-    id='MiniGrid-MultiRoom-N2-v2',
-    entry_point='gym_minigrid.envs:MultiRoomEnvN2v2'
-)
-
-register(
-    id='MiniGrid-MultiRoom-N2-v5',
-    entry_point='gym_minigrid.envs:MultiRoomEnvN2v5'
-)
-
-register(
-    id='MiniGrid-MultiRoom-N2-v6',
-    entry_point='gym_minigrid.envs:MultiRoomEnvN2v6'
-)
-
-register(
-    id='MiniGrid-MultiRoom-N2-v7',
-    entry_point='gym_minigrid.envs:MultiRoomEnvN2v7'
-)
+for i in range(20):
+    register(
+        id='MiniGrid-MultiRoom-N2-v' + str(i),
+        entry_point='gym_minigrid.envs:MultiRoomEnvN2v' + str(i)
+    )

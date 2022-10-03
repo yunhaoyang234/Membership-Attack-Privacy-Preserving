@@ -3,6 +3,7 @@ README.md
 setup.py
 gym_minigrid/__init__.py
 gym_minigrid/minigrid.py
+gym_minigrid/multiroom.py
 gym_minigrid/register.py
 gym_minigrid/rendering.py
 gym_minigrid/roomgrid.py

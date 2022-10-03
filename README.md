@@ -43,16 +43,19 @@ cd gym-minigrid
 pip install -e .
 ```
 
-If you haven't install **rl-starter-files**, please do the following:
-```
-cd rl-starter-files
-pip install -r requirements.txt
-```
-
 If you haven't install **torch-ac**, please do the following:
 ```
 cd torch-ac
 pip install -e .
+```
+
+If you have problems with runing the code, please try to build a virtual environment and then run the commands above to install required pakages in the virtual environment:
+```
+pip install virtualenv
+virtualenv venv
+cd venv
+source bin/activate
+cd ..
 ```
 
 ### Environments:
@@ -143,6 +146,6 @@ pip install notebook
 
 To run the notebook, go to the directory where your notebook locate at and run the following command at the Terminal (Mac/Linux) or Command Prompt (Windows):
 ```
-jupyter notebook
+jupyter-notebook
 ```
-
+The directory where your jupyter notebook located will be displayed on your browser. Then, please click on the notebook and run the codes in order.

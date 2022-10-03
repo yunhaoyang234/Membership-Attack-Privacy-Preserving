@@ -1,0 +1,162 @@
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env MiniGrid-FourRooms-v1 --model FourRoom1 --frames 20480
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-FourRooms-v1', epochs=4, frames=20480, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env iniGrid-MultiRoom-N2-v5 --model FourRoom1 --frames 20480
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='iniGrid-MultiRoom-N2-v5', epochs=4, frames=20480, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env iniGrid-MultiRoom-N2-v5 --model FourRoom1 --frames 20480
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='iniGrid-MultiRoom-N2-v5', epochs=4, frames=20480, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env iniGrid-MultiRoom-N2-v5 --model FourRoom1 --frames 20480
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='iniGrid-MultiRoom-N2-v5', epochs=4, frames=20480, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env MiniGrid-MultiRoom-N2-v5 --model FourRoom1 --frames 20480
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v5', epochs=4, frames=20480, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env MiniGrid-MultiRoom-N2-v5 --model FourRoom1 --frames 20480
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v5', epochs=4, frames=20480, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env MiniGrid-MultiRoom-N2-v5 --model FourRoom1 --frames 20480
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v5', epochs=4, frames=20480, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+Environments loaded
+
+Training status loaded
+
+Observations preprocessor loaded
+Model loaded
+
+ACModel(
+  (image_conv): Sequential(
+    (0): Conv2d(3, 16, kernel_size=(2, 2), stride=(1, 1))
+    (1): ReLU()
+    (2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+    (3): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1))
+    (4): ReLU()
+    (5): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1))
+    (6): ReLU()
+  )
+  (actor): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=7, bias=True)
+  )
+  (critic): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=1, bias=True)
+  )
+)
+
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env MiniGrid-MultiRoom-N2-v5 --model FourRoom1 --frames 20480
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v5', epochs=4, frames=20480, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+Environments loaded
+
+Training status loaded
+
+Observations preprocessor loaded
+Model loaded
+
+ACModel(
+  (image_conv): Sequential(
+    (0): Conv2d(3, 16, kernel_size=(2, 2), stride=(1, 1))
+    (1): ReLU()
+    (2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+    (3): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1))
+    (4): ReLU()
+    (5): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1))
+    (6): ReLU()
+  )
+  (actor): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=7, bias=True)
+  )
+  (critic): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=1, bias=True)
+  )
+)
+
+Optimizer loaded
+
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env MiniGrid-MultiRoom-N2-v5 --model FourRoom1 --frames 20480
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v5', epochs=4, frames=20480, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+/Users/yunhaoyang/Desktop/Membership-Attack-Privacy-Preserving/rl-starter-files/scripts/train.py --algo ppo --env MiniGrid-MultiRoom-N2-v5 --model FourRoom1 --frames 20480
+
+Namespace(a=0, algo='ppo', batch_size=256, clip_eps=0.2, discount=0.99, entropy_coef=0.01, env='MiniGrid-MultiRoom-N2-v5', epochs=4, frames=20480, frames_per_proc=None, gae_lambda=0.95, k=0, log_interval=1, lr=0.001, max_grad_norm=0.5, mem=False, model='FourRoom1', optim_alpha=0.99, optim_eps=1e-08, procs=16, recurrence=1, save_interval=10, seed=1, test=0, text=False, value_loss_coef=0.5)
+
+Device: cpu
+
+Environments loaded
+
+Training status loaded
+
+Observations preprocessor loaded
+Model loaded
+
+ACModel(
+  (image_conv): Sequential(
+    (0): Conv2d(3, 16, kernel_size=(2, 2), stride=(1, 1))
+    (1): ReLU()
+    (2): MaxPool2d(kernel_size=(2, 2), stride=(2, 2), padding=0, dilation=1, ceil_mode=False)
+    (3): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1))
+    (4): ReLU()
+    (5): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1))
+    (6): ReLU()
+  )
+  (actor): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=7, bias=True)
+  )
+  (critic): Sequential(
+    (0): Linear(in_features=64, out_features=64, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=64, out_features=1, bias=True)
+  )
+)
+
+Optimizer loaded
+
+U 1 | F 002048 | FPS 3058 | D 0 | rR:μσmM 0.00 0.00 0.00 0.00 | F:μσmM 0.0 0.0 0 0 | H 1.921 | V -0.109 | pL -0.022 | vL 0.001 | ∇ 0.040
+U 2 | F 004096 | FPS 3111 | D 1 | rR:μσmM 0.02 0.07 0.00 0.28 | F:μσmM 197.5 9.7 160.0 200.0 | H 1.926 | V -0.072 | pL -0.027 | vL 0.001 | ∇ 0.013
+U 3 | F 006144 | FPS 3174 | D 1 | rR:μσmM 0.04 0.14 0.00 0.56 | F:μσmM 193.6 24.9 97.0 200.0 | H 1.931 | V -0.055 | pL -0.016 | vL 0.001 | ∇ 0.012
+U 4 | F 008192 | FPS 3163 | D 2 | rR:μσmM 0.00 0.00 0.00 0.00 | F:μσmM 200.0 0.0 200.0 200.0 | H 1.939 | V -0.045 | pL -0.013 | vL 0.000 | ∇ 0.007
+U 5 | F 010240 | FPS 3060 | D 3 | rR:μσmM 0.00 0.00 0.00 0.00 | F:μσmM 200.0 0.0 200.0 200.0 | H 1.939 | V -0.031 | pL -0.011 | vL 0.000 | ∇ 0.005
+U 6 | F 012288 | FPS 2804 | D 4 | rR:μσmM 0.07 0.20 0.00 0.74 | F:μσmM 187.0 36.9 58.0 200.0 | H 1.939 | V -0.021 | pL -0.014 | vL 0.002 | ∇ 0.014
+U 7 | F 014336 | FPS 3071 | D 4 | rR:μσmM 0.02 0.10 0.00 0.40 | F:μσmM 195.9 16.0 134.0 200.0 | H 1.940 | V -0.016 | pL -0.004 | vL 0.000 | ∇ 0.004
+U 8 | F 016384 | FPS 3043 | D 5 | rR:μσmM 0.05 0.12 0.00 0.38 | F:μσmM 192.6 19.7 138.0 200.0 | H 1.939 | V -0.003 | pL -0.009 | vL 0.001 | ∇ 0.012
+U 9 | F 018432 | FPS 3016 | D 6 | rR:μσmM 0.03 0.12 0.00 0.50 | F:μσmM 194.4 21.8 110.0 200.0 | H 1.934 | V -0.000 | pL -0.007 | vL 0.001 | ∇ 0.011
+U 10 | F 020480 | FPS 3089 | D 6 | rR:μσmM 0.07 0.18 0.00 0.72 | F:μσmM 187.6 33.8 63.0 200.0 | H 1.931 | V 0.011 | pL -0.010 | vL 0.002 | ∇ 0.024
+Status saved

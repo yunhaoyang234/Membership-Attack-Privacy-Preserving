@@ -139,7 +139,7 @@ if args.algo == "a2c":
 elif args.algo == "ppo":
     algo = torch_ac.PPOAlgo(envs, acmodel, device, args.frames_per_proc, args.discount, args.lr, args.gae_lambda,
                             args.entropy_coef, args.value_loss_coef, args.max_grad_norm, args.recurrence,
-                            args.optim_eps, args.clip_eps, args.epochs, args.batch_size, preprocess_obss, k=args.k, a=args.a)
+                            args.optim_eps, args.clip_eps, args.epochs, args.batch_size, preprocess_obss, k=args.k)
 else:
     raise ValueError("Incorrect algorithm name: {}".format(args.algo))
 
@@ -222,7 +222,7 @@ while num_frames < args.frames:
         utils.save_status(status, model_dir)
         txt_logger.info("Status saved")
 
-# if args.test == 1:
-#     df = pd.DataFrame(probabilities[1:].numpy())
-#     df.to_csv('storage/' + args.model + '/probabilities.csv', index=False)
+if args.test == 1:
+    df = pd.DataFrame(probabilities[1:].numpy())
+    df.to_csv('storage/' + args.model + '/probabilities.csv', index=False)
 
