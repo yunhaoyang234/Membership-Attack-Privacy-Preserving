@@ -22,23 +22,6 @@ These files are suited for [`gym-minigrid`](https://github.com/maximecb/gym-mini
   - Act by sampling or argmax
   - List the worst performed episodes
 
-## Installation
-
-1. Clone this repository.
-
-2. Install `gym-minigrid` environments and `torch-ac` RL algorithms:
-
-```
-pip3 install -r requirements.txt
-```
-
-**Note:** If you want to modify `torch-ac` algorithms, you will need to rather install a cloned version, i.e.:
-```
-git clone https://github.com/lcswillems/torch-ac.git
-cd torch-ac
-pip3 install -e .
-```
-
 ## Example of use
 
 Train, visualize and evaluate an agent on the `MiniGrid-DoorKey-5x5-v0` environment:
