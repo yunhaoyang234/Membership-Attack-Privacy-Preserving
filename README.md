@@ -148,4 +148,4 @@ To run the notebook, go to the directory where your notebook locate at and run t
 ```
 jupyter-notebook
 ```
-The directory where your jupyter notebook located will be displayed on your browser. Then, please click on the notebook and run the codes in order.
+The directory where your jupyter notebook located will be displayed on your browser. Then, please click on the notebook (.ipynb) and run the codes in order.
