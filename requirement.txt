@@ -6,3 +6,4 @@ matplotlib==3.4.0
 scipy==1.7.1
 pandas>=1.0.0
 tensorboardX>=1.6
+tensorboard>=2.0.0

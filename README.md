@@ -72,7 +72,7 @@ cd ..
 - `MiniGrid-MultiRoom-N2-v7`- Multi-room environment with seed 7.
 
 ### Example of Training/Testing RL Models:
-#### Train, test, save trajectories on `MiniGrid-FourRooms-v1` environment, using PPO algorithm.
+#### Train, test, save trajectories on `MiniGrid-FourRooms-v1` environment, using PPO algorithm. Please `cd rl-starter-files` to run the following examples.
 1, Train the agent on the `MiniGrid-FourRooms-v1` environment using PPO.
 ```
 python -m scripts.train --algo ppo --env MiniGrid-FourRooms-v1 --model FourRoom1 --frames 204800
@@ -92,13 +92,13 @@ python -m scripts.visualize --env MiniGrid-FourRooms-v1 --model FourRoom1
 
 2, Visualize the reward plot and other plots:
 ```
-tensorboard --logdir rl-starter-files/storage/FourRoom1
+tensorboard --logdir storage/FourRoom1
 ```
 
 3, Visualize the multiple plots simultaneously:
 Create a new directory `rl-starter-files/storage/fr_plots/` and copy **events.out.tfevents** files to `fr_plots/` directory. An example is [here](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files/storage/mr_plots). Then run:
 ```
-tensorboard --logdir rl-starter-files/storage/fr_plots
+tensorboard --logdir storage/fr_plots
 ```
 
 **More examples and visualizations can be found on the README in [gym-minigrid](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/gym-minigrid) and [rl-starter-files](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files)**
