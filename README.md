@@ -94,9 +94,10 @@ python -m scripts.visualize --env MiniGrid-FourRooms-v1 --model FourRoom1
 ```
 tensorboard --logdir storage/FourRoom1
 ```
+Follow the instructions on terminal and open https://localhost:6006/ on the browser to view the plots.
 
 3, Visualize the multiple plots simultaneously:
-Create a new directory `rl-starter-files/storage/fr_plots/` and copy **events.out.tfevents** files to `fr_plots/` directory. An example is [here](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files/storage/mr_plots). Then run:
+Create a new directory `rl-starter-files/storage/fr_plots/` and copy **events.out.tfevents** files to `fr_plots/` directory. An example is [here](https://github.com/yunhaoyang234/Membership-Attack-Privacy-Preserving/tree/main/rl-starter-files/storage/fr_plots). Then run:
 ```
 tensorboard --logdir storage/fr_plots
 ```
