@@ -1,9 +1,8 @@
 import argparse
-import time
 import numpy
-import torch
 
 import utils
+from utils import device
 
 
 # Parse arguments
@@ -23,7 +22,7 @@ parser.add_argument("--pause", type=float, default=0.1,
                     help="pause duration between two consequent actions of the agent (default: 0.1)")
 parser.add_argument("--gif", type=str, default=None,
                     help="store output as gif with the given filename")
-parser.add_argument("--episodes", type=int, default=1000000,
+parser.add_argument("--episodes", type=int, default=1000,
                     help="number of episodes to visualize")
 parser.add_argument("--memory", action="store_true", default=False,
                     help="add a LSTM to the model")
@@ -38,12 +37,11 @@ utils.seed(args.seed)
 
 # Set device
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Device: {device}\n")
 
 # Load environment
 
-env = utils.make_env(args.env, args.seed)
+env = utils.make_env(args.env, args.seed, render_mode="human")
 for _ in range(args.shift):
     env.reset()
 print("Environment loaded\n")
@@ -52,35 +50,34 @@ print("Environment loaded\n")
 
 model_dir = utils.get_model_dir(args.model)
 agent = utils.Agent(env.observation_space, env.action_space, model_dir,
-                    device=device, argmax=args.argmax, use_memory=args.memory, use_text=args.text)
+                    argmax=args.argmax, use_memory=args.memory, use_text=args.text)
 print("Agent loaded\n")
 
 # Run the agent
 
 if args.gif:
-   from array2gif import write_gif
-   frames = []
+    from array2gif import write_gif
+
+    frames = []
 
 # Create a window to view the environment
-env.render('human')
+env.render()
 
 for episode in range(args.episodes):
-    obs = env.reset()
+    obs, _ = env.reset()
 
     while True:
-        env.render('human')
+        env.render()
         if args.gif:
-            frames.append(numpy.moveaxis(env.render("rgb_array"), 2, 0))
+            frames.append(numpy.moveaxis(env.get_frame(), 2, 0))
 
         action = agent.get_action(obs)
-        obs, reward, done, _ = env.step(action)
+        obs, reward, terminated, truncated, _ = env.step(action)
+        done = terminated | truncated
         agent.analyze_feedback(reward, done)
 
-        if done or env.window.closed:
+        if done:
             break
-
-    if env.window.closed:
-        break
 
 if args.gif:
     print("Saving gif... ", end="")

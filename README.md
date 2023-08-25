@@ -8,10 +8,9 @@ See requirement.txt, please run the code under python 3.7 or later.
 Run
 `pip install -r requirement.txt`
 
-If you haven't install **gym-minigrid**, please do the following:
+If you haven't install **minigrid**, please do the following:
 ```
-cd gym-minigrid
-pip install -e .
+pip install -e path/to/Minigrid
 ```
 
 If you haven't install **rl-starter-files**, please do the following:

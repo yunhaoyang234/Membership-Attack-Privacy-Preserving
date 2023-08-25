@@ -3,15 +3,13 @@ import torch
 
 from torch_ac.format import default_preprocess_obss
 from torch_ac.utils import DictList, ParallelEnv
-from torch.distributions.categorical import Categorical
-from scipy.stats import dirichlet
-import numpy as np
+
 
 class BaseAlgo(ABC):
     """The base class for RL algorithms."""
 
     def __init__(self, envs, acmodel, device, num_frames_per_proc, discount, lr, gae_lambda, entropy_coef,
-                 value_loss_coef, max_grad_norm, recurrence, preprocess_obss, reshape_reward, k=0, a=0, sigma=0, valid_envs=None):
+                 value_loss_coef, max_grad_norm, recurrence, preprocess_obss, reshape_reward):
         """
         Initializes a `BaseAlgo` instance.
 
@@ -49,9 +47,6 @@ class BaseAlgo(ABC):
         # Store parameters
 
         self.env = ParallelEnv(envs)
-        self.valid_envs = None
-        if valid_envs is not None:
-            self.valid_envs = ParallelEnv(valid_envs)
         self.acmodel = acmodel
         self.device = device
         self.num_frames_per_proc = num_frames_per_proc
@@ -64,9 +59,6 @@ class BaseAlgo(ABC):
         self.recurrence = recurrence
         self.preprocess_obss = preprocess_obss or default_preprocess_obss
         self.reshape_reward = reshape_reward
-        self.k = k
-        self.a = a
-        self.sigma = sigma
 
         # Control parameters
 
@@ -88,9 +80,7 @@ class BaseAlgo(ABC):
         shape = (self.num_frames_per_proc, self.num_procs)
 
         self.obs = self.env.reset()
-        if self.valid_envs is not None:
-            self.vobs = self.valid_envs.reset()
-        self.obss = [None]*(shape[0])
+        self.obss = [None] * (shape[0])
         if self.acmodel.recurrent:
             self.memory = torch.zeros(shape[1], self.acmodel.memory_size, device=self.device)
             self.memories = torch.zeros(*shape, self.acmodel.memory_size, device=self.device)
@@ -113,15 +103,6 @@ class BaseAlgo(ABC):
         self.log_reshaped_return = [0] * self.num_procs
         self.log_num_frames = [0] * self.num_procs
 
-    def dirichlet_dist(self, traj, k=1, a=0):
-        for i in range(len(traj)):
-            alpha = torch.exp(traj[i]) * k + a
-            rv = dirichlet.rvs(alpha, size=1, random_state=None)[0]
-            while np.min(rv)==0:
-                rv = dirichlet.rvs(alpha, size=1, random_state=None)[0]
-            traj[i] = torch.log(torch.FloatTensor(rv))
-        return traj
-
     def collect_experiences(self):
         """Collects rollouts and computes advantages.
 
@@ -142,8 +123,6 @@ class BaseAlgo(ABC):
             Useful stats about the training process, including the average
             reward, policy loss, value loss, etc.
         """
-        probabilities = torch.zeros((1,7))
-        v_probs = torch.zeros((1,7))
 
         for i in range(self.num_frames_per_proc):
             # Do one agent-environment interaction
@@ -154,28 +133,10 @@ class BaseAlgo(ABC):
                     dist, value, memory = self.acmodel(preprocessed_obs, self.memory * self.mask.unsqueeze(1))
                 else:
                     dist, value = self.acmodel(preprocessed_obs)
-            if self.k > 0 or self.a > 0:
-                logits = self.dirichlet_dist(dist.logits, self.k, self.a)
-                dist = Categorical(logits=logits)
-            probabilities = torch.cat([probabilities, dist.logits])
-
             action = dist.sample()
 
-            obs, reward, done, _ = self.env.step(action.cpu().numpy())
-
-            if self.valid_envs is not None:
-                preprocessed_obs = self.preprocess_obss(self.vobs, device=self.device)
-                with torch.no_grad():
-                    if self.acmodel.recurrent:
-                        dist, value, memory = self.acmodel(preprocessed_obs, self.memory * self.mask.unsqueeze(1))
-                    else:
-                        dist, value = self.acmodel(preprocessed_obs)
-                if self.k > 0 or self.a > 0:
-                    logits = self.dirichlet_dist(dist.logits, self.k)
-                    dist = Categorical(logits=logits)
-                v_probs = torch.cat([v_probs, dist.logits])
-                action = dist.sample()
-                vobs, vreward, vdone, _ = self.env.step(action.cpu().numpy())
+            obs, reward, terminated, truncated, _ = self.env.step(action.cpu().numpy())
+            done = tuple(a | b for a, b in zip(terminated, truncated))
 
             # Update experiences values
 
@@ -227,13 +188,9 @@ class BaseAlgo(ABC):
             next_mask = self.masks[i+1] if i < self.num_frames_per_proc - 1 else self.mask
             next_value = self.values[i+1] if i < self.num_frames_per_proc - 1 else next_value
             next_advantage = self.advantages[i+1] if i < self.num_frames_per_proc - 1 else 0
-            if self.gae_lambda > 1:
-                n_val, dc = int(self.gae_lambda), self.discount
-                next_reward = self.rewards[i+1] if i < self.num_frames_per_proc - 2 else self.rewards[-1]
-                self.advantages[i] = dc*next_advantage*next_mask + dc*next_rewward + dc*next_value*next_mask - self.values[i]
-            else:
-                delta = self.rewards[i] + self.discount * next_value * next_mask - self.values[i]
-                self.advantages[i] = delta + self.discount * self.gae_lambda * next_advantage * next_mask
+
+            delta = self.rewards[i] + self.discount * next_value * next_mask - self.values[i]
+            self.advantages[i] = delta + self.discount * self.gae_lambda * next_advantage * next_mask
 
         # Define experiences:
         #   the whole experience is the concatenation of the experience
@@ -255,14 +212,10 @@ class BaseAlgo(ABC):
         # for all tensors below, T x P -> P x T -> P * T
         exps.action = self.actions.transpose(0, 1).reshape(-1)
         exps.value = self.values.transpose(0, 1).reshape(-1)
-
         exps.reward = self.rewards.transpose(0, 1).reshape(-1)
         exps.advantage = self.advantages.transpose(0, 1).reshape(-1)
         exps.returnn = exps.value + exps.advantage
         exps.log_prob = self.log_probs.transpose(0, 1).reshape(-1)
-        exps.probabilities = probabilities[1:]
-        if self.valid_envs is not None:
-            exps.v_probs = v_probs[1:]
 
         # Preprocess experiences
 

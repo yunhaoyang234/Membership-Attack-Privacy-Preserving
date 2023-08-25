@@ -4,7 +4,7 @@ import numpy
 import re
 import torch
 import torch_ac
-import gym
+import gymnasium as gym
 
 import utils
 
@@ -20,15 +20,17 @@ def get_obss_preprocessor(obs_space):
             })
 
     # Check if it is a MiniGrid observation space
-    elif isinstance(obs_space, gym.spaces.Dict) and list(obs_space.spaces.keys()) == ["image"]:
+    elif isinstance(obs_space, gym.spaces.Dict) and "image" in obs_space.spaces.keys():
         obs_space = {"image": obs_space.spaces["image"].shape, "text": 100}
 
         vocab = Vocabulary(obs_space["text"])
+
         def preprocess_obss(obss, device=None):
             return torch_ac.DictList({
                 "image": preprocess_images([obs["image"] for obs in obss], device=device),
                 "text": preprocess_texts([obs["mission"] for obs in obss], vocab, device=device)
             })
+
         preprocess_obss.vocab = vocab
 
     else:

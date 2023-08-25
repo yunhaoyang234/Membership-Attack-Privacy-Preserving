@@ -1,12 +1,5 @@
 Metadata-Version: 2.1
 Name: torch-ac
-Version: 1.1.0
-Summary: UNKNOWN
-Home-page: UNKNOWN
-License: UNKNOWN
+Version: 1.4.0
 Keywords: reinforcement learning,actor-critic,a2c,ppo,multi-processes,gpu
-Platform: UNKNOWN
 License-File: LICENSE
-
-UNKNOWN
-
